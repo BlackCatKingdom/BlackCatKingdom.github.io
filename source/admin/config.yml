@@ -1,0 +1,27 @@
+locale: 'zh_Hans'
+backend:
+  name: git-gateway  # 这里必须用 git-gateway，配合 Netlify 使用
+  branch: main       # ⚠️ 注意：这里填你存放“Hexo源码”的分支名，可能是 main 或 master
+
+media_folder: "source/images/uploads" # 图片上传到哪里
+public_folder: "/images/uploads"      # 文章里引用图片的路径
+
+# 这是一个针对 Hexo 的特别设置，防止 CMS 删掉你的 Frontmatter
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: "posts"
+    label: "文章"
+    folder: "source/_posts" # Hexo 的文章都在这里
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "标题", name: "title", widget: "string"}
+      - {label: "布局", name: "layout", widget: "hidden", default: "post"}
+      - {label: "日期", name: "date", widget: "datetime"}
+      - {label: "标签", name: "tags", widget: "list", required: false}
+      - {label: "分类", name: "categories", widget: "list", required: false}
+      - {label: "正文", name: "body", widget: "markdown"}
