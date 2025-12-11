@@ -1,11 +1,12 @@
 locale: 'zh_Hans'
 backend:
   name: git-gateway
-  branch: main        # 确认你的分支名是 main
+  branch: main        # ⚠️ 确保你的分支名是 main
 
 media_folder: "source/images/uploads"
 public_folder: "/images/uploads"
 
+# 防止文件名乱码
 slug:
   encoding: "ascii"
   clean_accents: true
@@ -26,6 +27,7 @@ collections:
       - {label: "分类", name: "categories", widget: "list", required: false}
       - {label: "正文", name: "body", widget: "markdown"}
 
+  # --- 菜单2：网站设置 (加强版) ---
   - name: "settings"
     label: "网站设置"
     files:
@@ -38,7 +40,7 @@ collections:
           - {label: "网站副标题", name: "subtitle", widget: "string"}
           - {label: "作者", name: "author", widget: "string"}
           
-          # --- SEO 优化 (新增) ---
+          # --- SEO 优化 ---
           - {label: "网站描述", name: "description", widget: "text", hint: "一段话介绍你的博客，利于SEO"}
           - {label: "关键词", name: "keywords", widget: "string", hint: "用逗号分隔，例如：生活,技术,随笔"}
 
@@ -54,12 +56,12 @@ collections:
                 fields:
                   - {label: "Logo头像", name: "logo", widget: "image"}
               
-              # 社交链接 (新增 - 列表模式)
+              # 社交链接 (列表模式)
               - label: "社交链接"
                 name: "social"
                 widget: "list"
                 summary: "{{fields.id}}"
                 fields:
-                  - {label: "平台ID", name: "id", widget: "string", hint: "例如: github, bilibili, email"}
+                  - {label: "平台ID", name: "id", widget: "string", hint: "例如: github, bilibili"}
                   - {label: "图标代码", name: "icon", widget: "string", hint: "例如: fa-brands fa-github (去FontAwesome找)"}
                   - {label: "链接地址", name: "url", widget: "string"}
