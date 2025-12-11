@@ -25,3 +25,19 @@ collections:
       - {label: "标签", name: "tags", widget: "list", required: false}
       - {label: "分类", name: "categories", widget: "list", required: false}
       - {label: "正文", name: "body", widget: "markdown"}
+
+      - name: "settings"
+    label: "网站设置"
+    files:
+      - name: "config"
+        label: "全局配置"
+        file: "_config.yml"  # 让后台直接修改根目录的配置文件
+        fields:
+          - {label: "网站标题", name: "title", widget: "string"}
+          - {label: "网站副标题", name: "subtitle", widget: "string"}
+          - {label: "作者", name: "author", widget: "string"}
+          - {label: "侧边栏头像", name: "theme_config", widget: "object", fields: [
+              {label: "Logo路径", name: "sidebar", widget: "object", fields: [
+                 {label: "图片", name: "logo", widget: "image"}
+              ]}
+            ]}
