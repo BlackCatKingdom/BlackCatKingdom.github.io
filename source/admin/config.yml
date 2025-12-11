@@ -26,7 +26,6 @@ collections:
       - {label: "分类", name: "categories", widget: "list", required: false}
       - {label: "正文", name: "body", widget: "markdown"}
 
-  # --- 菜单2：网站设置 ---
   - name: "settings"
     label: "网站设置"
     files:
@@ -34,15 +33,33 @@ collections:
         label: "全局配置"
         file: "_config.yml"
         fields:
+          # --- 基础信息 ---
           - {label: "网站标题", name: "title", widget: "string"}
           - {label: "网站副标题", name: "subtitle", widget: "string"}
           - {label: "作者", name: "author", widget: "string"}
+          
+          # --- SEO 优化 (新增) ---
+          - {label: "网站描述", name: "description", widget: "text", hint: "一段话介绍你的博客，利于SEO"}
+          - {label: "关键词", name: "keywords", widget: "string", hint: "用逗号分隔，例如：生活,技术,随笔"}
+
+          # --- 主题外观 ---
           - label: "主题配置"
             name: "theme_config"
             widget: "object"
             fields:
+              # 侧边栏头像
               - label: "侧边栏"
                 name: "sidebar"
                 widget: "object"
                 fields:
                   - {label: "Logo头像", name: "logo", widget: "image"}
+              
+              # 社交链接 (新增 - 列表模式)
+              - label: "社交链接"
+                name: "social"
+                widget: "list"
+                summary: "{{fields.id}}"
+                fields:
+                  - {label: "平台ID", name: "id", widget: "string", hint: "例如: github, bilibili, email"}
+                  - {label: "图标代码", name: "icon", widget: "string", hint: "例如: fa-brands fa-github (去FontAwesome找)"}
+                  - {label: "链接地址", name: "url", widget: "string"}
