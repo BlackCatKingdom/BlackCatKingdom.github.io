@@ -104,3 +104,8 @@ deploy:
   type: git
   repo: https://github.com/BlackCatKingdom/BlackCatKingdom.github.io.git
   branch: main
+  
+# Stellar 主题专用配置
+theme_config:
+  sidebar:
+    logo: source/images/uploads/cat.jpg
