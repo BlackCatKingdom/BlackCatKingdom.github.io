@@ -23,9 +23,10 @@ prismjs:
   preprocess: true
   line_number: true
   tab_replace: ""
-keywords: null
 title: 探索未知
+subtitle: 探索未知
 author: 陈最
+keywords: 生活,技术,随笔
 new_post_name: :title.md
 permalink: :year/:month/:day/:title/
 category_dir: categories
@@ -51,7 +52,10 @@ highlight:
 skip_render: admin/**
 public_dir: public
 tag_map: null
-subtitle: 探索未知
+description: 生活,技术,随笔
+theme_config:
+  sidebar:
+    logo: /images/uploads/tx.jpg
 language: zh-CN
 updated_option: mtime
 meta_generator: true
@@ -62,10 +66,3 @@ category_map: null
 code_dir: downloads/code
 default_category: uncategorized
 post_asset_folder: false
-description: ""
-
-# --- 核心修改区 ---
-theme_config:
-  sidebar:
-    # 这里换成了外链，保证头像 100% 显示，且不消耗 Netlify 资源
-    logo: https://cdn.jsdelivr.net/gh/BlackCatKingdom/BlackCatKingdom.github.io@main/source/images/uploads/cat.jpg
