@@ -4,6 +4,7 @@ subtitle: 探索未知
 author: 陈最
 language: zh-CN
 timezone: ""
+favicon: /images/uploads/cat.jpg 
 
 # 👇 关键修改：把头像放在这里！这是 Stellar 读取头像的真正位置
 avatar: https://cdn.jsdelivr.net/gh/BlackCatKingdom/BlackCatKingdom.github.io@main/source/images/uploads/cat.jpg
