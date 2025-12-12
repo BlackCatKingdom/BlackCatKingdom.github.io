@@ -38,7 +38,7 @@ external_link:
   enable: true
   field: site
   exclude: ""
-url: https://seekblack.cntheme
+url: https://seekblack.cn
 archive_dir: archives
 per_page: 10
 ignore: null
@@ -52,9 +52,6 @@ skip_render: admin/**
 public_dir: public
 tag_map: null
 subtitle: 探索未知
-theme_config:
-  sidebar:
-    logo: /images/uploads/cat.jpg
 language: zh-CN
 updated_option: mtime
 meta_generator: true
@@ -66,3 +63,9 @@ code_dir: downloads/code
 default_category: uncategorized
 post_asset_folder: false
 description: ""
+
+# --- 核心修改区 ---
+theme_config:
+  sidebar:
+    # 这里换成了外链，保证头像 100% 显示，且不消耗 Netlify 资源
+    logo: https://cdn.jsdelivr.net/gh/BlackCatKingdom/BlackCatKingdom.github.io@main/source/images/uploads/cat.jpg
