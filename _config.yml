@@ -55,7 +55,7 @@ tag_map: null
 description: 生活,技术,随笔
 theme_config:
   sidebar:
-    logo: /images/uploads/tx.jpg
+    logo: /images/uploads/cat.jpg
 language: zh-CN
 updated_option: mtime
 meta_generator: true
