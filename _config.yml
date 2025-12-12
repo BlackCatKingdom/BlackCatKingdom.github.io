@@ -1,71 +1,78 @@
-future: true
-syntax_highlighter: highlight.js
-permalink_defaults: null
-index_generator:
-  path: ""
-  per_page: 10
-  order_by: -date
-deploy:
-  type: git
-  repo: https://github.com/BlackCatKingdom/BlackCatKingdom.github.io.git
-  branch: main
-include: null
-titlecase: false
-date_format: YYYY-MM-DD
-filename_case: 0
-pagination_dir: page
-tag_dir: tags
-default_layout: post
-time_format: HH:mm:ss
-theme: stellar
-source_dir: source
-prismjs:
-  preprocess: true
-  line_number: true
-  tab_replace: ""
-keywords: null
+# --- 核心基础设置 ---
 title: 探索未知
+subtitle: 探索未知
 author: 陈最
-new_post_name: :title.md
+language: zh-CN
+timezone: ""
+
+# 👇 关键修改：把头像放在这里！这是 Stellar 读取头像的真正位置
+avatar: https://cdn.jsdelivr.net/gh/BlackCatKingdom/BlackCatKingdom.github.io@main/source/images/uploads/cat.jpg
+
+url: https://seekblack.cn
 permalink: :year/:month/:day/:title/
-category_dir: categories
-i18n_dir: :lang
-relative_link: false
+permalink_defaults: null
 pretty_urls:
   trailing_index: true
   trailing_html: true
+
+# --- 目录与文件设置 ---
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render: admin/**
+
+# --- 文章与写作设置 ---
+new_post_name: :title.md
+default_layout: post
+titlecase: false
 external_link:
   enable: true
   field: site
   exclude: ""
-# 👇 修复了之前的拼写错误
-url: https://seekblack.cn
-archive_dir: archives
-per_page: 10
-ignore: null
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
 highlight:
+  enable: true
   line_number: true
   auto_detect: false
   tab_replace: ""
   wrap: true
   hljs: false
-skip_render: admin/**
-public_dir: public
-tag_map: null
-subtitle: 探索未知
-language: zh-CN
-updated_option: mtime
-meta_generator: true
-timezone: ""
-exclude: null
-render_drafts: false
-category_map: null
-code_dir: downloads/code
-default_category: uncategorized
-post_asset_folder: false
-description: ""
+prismjs:
+  preprocess: true
+  line_number: true
+  tab_replace: ""
 
-# 👇 这里使用了CDN外链，不消耗Netlify资源，且100%显示
-theme_config:
-  sidebar:
-    logo: https://cdn.jsdelivr.net/gh/BlackCatKingdom/BlackCatKingdom.github.io@main/source/images/uploads/cat.jpg
+# --- 分页与生成器 ---
+index_generator:
+  path: ""
+  per_page: 10
+  order_by: -date
+per_page: 10
+pagination_dir: page
+
+# --- 扩展与主题 ---
+theme: stellar
+deploy:
+  type: git
+  repo: https://github.com/BlackCatKingdom/BlackCatKingdom.github.io.git
+  branch: main
+
+# --- 其他 ---
+meta_generator: true
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+updated_option: mtime
+description: ""
+keywords: null
+exclude: null
+ignore: null
+
+# 👇 删除了之前那个错误的 theme_config 配置，保持干净
