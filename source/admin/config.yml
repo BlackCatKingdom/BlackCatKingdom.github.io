@@ -1,21 +1,22 @@
 locale: 'zh_Hans'
 backend:
-  name: git-gateway  # 这里必须用 git-gateway，配合 Netlify 使用
-  branch: main       # ⚠️ 注意：这里填你存放“Hexo源码”的分支名，可能是 main 或 master
+  name: git-gateway
+  branch: main        # ⚠️ 确保你的分支名是 main
 
-media_folder: "source/images/uploads" # 图片上传到哪里
-public_folder: "/images/uploads"      # 文章里引用图片的路径
+media_folder: "source/images/uploads"
+public_folder: "/images/uploads"
 
-# 这是一个针对 Hexo 的特别设置，防止 CMS 删掉你的 Frontmatter
+# 防止文件名乱码
 slug:
   encoding: "ascii"
   clean_accents: true
   sanitize_replacement: "-"
 
 collections:
+  # --- 菜单1：文章管理 ---
   - name: "posts"
     label: "文章"
-    folder: "source/_posts" # Hexo 的文章都在这里
+    folder: "source/_posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -25,3 +26,42 @@ collections:
       - {label: "标签", name: "tags", widget: "list", required: false}
       - {label: "分类", name: "categories", widget: "list", required: false}
       - {label: "正文", name: "body", widget: "markdown"}
+
+  # --- 菜单2：网站设置 (加强版) ---
+  - name: "settings"
+    label: "网站设置"
+    files:
+      - name: "config"
+        label: "全局配置"
+        file: "_config.yml"
+        fields:
+          # --- 基础信息 ---
+          - {label: "网站标题", name: "title", widget: "string"}
+          - {label: "网站副标题", name: "subtitle", widget: "string"}
+          - {label: "作者", name: "author", widget: "string"}
+          
+          # --- SEO 优化 ---
+          - {label: "网站描述", name: "description", widget: "text", hint: "一段话介绍你的博客，利于SEO"}
+          - {label: "关键词", name: "keywords", widget: "string", hint: "用逗号分隔，例如：生活,技术,随笔"}
+
+          # --- 主题外观 ---
+          - label: "主题配置"
+            name: "theme_config"
+            widget: "object"
+            fields:
+              # 侧边栏头像
+              - label: "侧边栏"
+                name: "sidebar"
+                widget: "object"
+                fields:
+                  - {label: "Logo头像", name: "logo", widget: "image"}
+              
+              # 社交链接 (列表模式)
+              - label: "社交链接"
+                name: "social"
+                widget: "list"
+                summary: "{{fields.id}}"
+                fields:
+                  - {label: "平台ID", name: "id", widget: "string", hint: "例如: github, bilibili"}
+                  - {label: "图标代码", name: "icon", widget: "string", hint: "例如: fa-brands fa-github (去FontAwesome找)"}
+                  - {label: "链接地址", name: "url", widget: "string"}
