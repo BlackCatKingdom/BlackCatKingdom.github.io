@@ -25,6 +25,16 @@ collections:
       - {label: "日期", name: "date", widget: "datetime"}
       - {label: "标签", name: "tags", widget: "list", required: false}
       - {label: "分类", name: "categories", widget: "list", required: false}
+      
+      # 👇👇👇 --- 新增：封面图配置开始 --- 👇👇👇
+      - label: "封面图"
+        name: "cover"
+        widget: "image"
+        required: false
+        media_library:
+          allow_multiple: false
+      # 👆👆👆 --- 新增：封面图配置结束 --- 👆👆👆
+
       - {label: "正文", name: "body", widget: "markdown"}
 
   # --- 菜单2：网站设置 (加强版) ---
@@ -39,7 +49,7 @@ collections:
           - {label: "网站标题", name: "title", widget: "string"}
           - {label: "网站副标题", name: "subtitle", widget: "string"}
           - {label: "作者", name: "author", widget: "string"}
-          
+           
           # --- SEO 优化 ---
           - {label: "网站描述", name: "description", widget: "text", hint: "一段话介绍你的博客，利于SEO"}
           - {label: "关键词", name: "keywords", widget: "string", hint: "用逗号分隔，例如：生活,技术,随笔"}
@@ -55,7 +65,7 @@ collections:
                 widget: "object"
                 fields:
                   - {label: "Logo头像", name: "logo", widget: "image"}
-              
+               
               # 社交链接 (列表模式)
               - label: "社交链接"
                 name: "social"
