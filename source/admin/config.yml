@@ -1,7 +1,10 @@
 locale: 'zh_Hans'
 backend:
-  name: git-gateway
-  branch: main        # ⚠️ 确保你的分支名是 main
+  name: github
+  repo: BlackCatKingdom/BlackCatKingdom.github.io
+  branch: main
+  base_url: https://blog-oauth.vercel.app
+  auth_endpoint: auth
 
 media_folder: "source/images/uploads"
 public_folder: "/images/uploads"
