@@ -39,5 +39,5 @@ jobs:
         hexo g
         hexo d
       env:
-        # 这里直接使用 GitHub 自带的 Token，不需要你额外配置
+        # 这里直接使用 GitHub 自带的 Token，不需要你额外配 置
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
