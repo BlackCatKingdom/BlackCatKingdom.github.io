@@ -3,10 +3,10 @@ name: Hexo Auto Deploy
 on:
   push:
     branches:
-      - main  # 监听 main 分支（源码分支）的变动
+      - main
 
 permissions:
-  contents: write  # 赋予写权限，以便发布网页
+  contents: write
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '20' # 推荐使用较新的 Node 版本
+        node-version: '20'
 
     - name: Config Git
       run: |
@@ -35,9 +35,9 @@ jobs:
 
     - name: Deploy
       run: |
+        # 👇 下面这行是新增的关键代码：自动注入 Token 身份验证
+        git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+        
         hexo clean
         hexo g
         hexo d
-      env:
-        # 这里直接使用 GitHub 自带的 Token，不需要你额外配 置
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
