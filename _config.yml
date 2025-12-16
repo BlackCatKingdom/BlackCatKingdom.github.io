@@ -64,7 +64,7 @@ theme: stellar
 deploy:
   type: git
   repo: https://github.com/BlackCatKingdom/BlackCatKingdom.github.io.git
-  branch: main
+  branch: gh-pages
 
 # --- 其他 ---
 meta_generator: true

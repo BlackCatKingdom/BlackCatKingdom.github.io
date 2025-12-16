@@ -1,0 +1,43 @@
+name: Hexo Auto Deploy
+
+on:
+  push:
+    branches:
+      - main  # 监听 main 分支（源码分支）的变动
+
+permissions:
+  contents: write  # 赋予写权限，以便发布网页
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v3
+      with:
+        ref: main
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20' # 推荐使用较新的 Node 版本
+
+    - name: Config Git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+
+    - name: Install Dependencies
+      run: |
+        npm install hexo-cli -g
+        npm install
+
+    - name: Deploy
+      run: |
+        hexo clean
+        hexo g
+        hexo d
+      env:
+        # 这里直接使用 GitHub 自带的 Token，不需要你额外配置
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
