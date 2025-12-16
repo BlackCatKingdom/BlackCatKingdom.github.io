@@ -1,8 +1,8 @@
 sidebar:
   logo: /images/uploads/cat.jpg
-  
+
 comments:
   service: twikoo
 
 twikoo:
-  envId: https://comments.seekblack.cn
+  envId: twikoo-comments-flame.vercel.app
