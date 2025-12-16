@@ -34,9 +34,9 @@ jobs:
         npm install
 
     - name: Deploy
+      # 👇 这里是核心改动：用 sed 命令直接修改 _config.yml 里的链接
       run: |
-        # 👇 下面这行是新增的关键代码：自动注入 Token 身份验证
-        git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+        sed -i "s|https://github.com/|https://${{ secrets.GITHUB_TOKEN }}@github.com/|g" _config.yml
         
         hexo clean
         hexo g
