@@ -471,8 +471,6 @@ plugins:
   # Katex
   katex:
     enable: #true # hexo-renderer-markdown-it-plus 默认开启 katex，此选项仅用于引入样式
-    inject: |
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.23/dist/katex.min.css" integrity="sha384-//SZkxyB7axjCAopkAL1E1rve+ZSPKapD89Lo/lLhcsXR+zOYl5z6zJZEFXil+q0" crossorigin="anonymous">
 
   # MathJax
   mathjax:
@@ -502,6 +500,77 @@ plugins:
     css: https://unpkg.com/heti@0.9/umd/heti.min.css
     js: https://unpkg.com/heti@0.9/umd/heti-addon.min.js
 
+# ✅ 【核心修改】这里是全局 CSS 注入，控制字体和五角星，已修复格式报错
+# ✅ 复制这段代码替换你 _config.stellar.yml 里原来的 inject 部分
+# ✅ 复制这段代码，完全覆盖 _config.stellar.yml 里的 inject 部分
+# ✅ 复制这段代码，完全覆盖 _config.stellar.yml 里的 inject 部分
+# ✅ 复制这段代码，完全覆盖 _config.stellar.yml 里的 inject 部分
+# ✅ 复制这段代码，完全覆盖 _config.stellar.yml 里的 inject 部分
+# ✅ 复制这段代码，完全覆盖 _config.stellar.yml 里的 inject 部分
+inject:
+  head:
+    # 1. 字体配置
+    - <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css">
+    - <style>:root{--font-family-body:"LXGW WenKai Screen",sans-serif!important;--font-family-headings:"LXGW WenKai Screen",sans-serif!important;}body,h1,h2,h3,h4,h5,h6,.title,.text,.content{font-family:"LXGW WenKai Screen",sans-serif!important;}</style>
+    
+    # 2. 全局样式定义 (Wiki橙色 + Blog紫色)
+    - |
+      <style>
+      /* 通用设置 */
+      .widget-wrapper .widget-body .item.active {
+          border-radius: 4px;
+          font-weight: bold;
+      }
+      .widget-wrapper .widget-body .item.active::after {
+          content: "★";
+          margin-left: 6px;
+          font-size: 14px;
+          display: inline-block;
+      }
+      /* 隐藏 explore */
+      .widget-wrapper .item.title strong, 
+      .widget-wrapper .item.title .dot {
+          display: none !important;
+      }
+
+      /* === 🍊 皮肤1：Wiki 橙色 (保持不变) === */
+      .item.active.style-wiki {
+          color: #ff9800 !important;
+          background: rgba(255, 152, 0, 0.1) !important;
+      }
+      .item.active.style-wiki::after {
+          color: #ff9800;
+      }
+
+      /* === 💜 皮肤2：Blog 紫色 (罗兰紫) === */
+      .item.active.style-blog {
+          color: #9c27b0 !important; /* 优雅的罗兰紫 */
+          background: rgba(156, 39, 176, 0.1) !important; /* 淡淡的紫色背景 */
+      }
+      .item.active.style-blog::after {
+          color: #9c27b0; /* 星星也变紫 */
+      }
+      </style>
+
+    # 3. 【智能脚本】自动判断页面类型 (保持不变)
+    - |
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var currentUrl = decodeURI(window.location.pathname);
+        var links = document.querySelectorAll(".widget-wrapper .widget-body .item");
+        
+        var isWiki = currentUrl.indexOf("/wiki/") !== -1;
+        var styleClass = isWiki ? "style-wiki" : "style-blog";
+        
+        links.forEach(function(link) {
+          var linkHref = decodeURI(link.getAttribute("href"));
+          if (linkHref === currentUrl) {
+            link.classList.add("active");
+            link.classList.add(styleClass);
+          }
+        });
+      });
+      </script>
 
 
 style:

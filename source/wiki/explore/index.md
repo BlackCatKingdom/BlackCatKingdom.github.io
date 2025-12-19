@@ -1,23 +1,12 @@
 ---
 layout: page
 wiki: explore
-title: OKR & 手记
+title: 个人成长OKR计划
 date: 2025-12-19 12:00:00
-# ✅ 这里才是控制首图的正确位置，不需要改别的
 cover: https://seekblack.oss-cn-chengdu.aliyuncs.com/okr.png
+banner: https://seekblack.oss-cn-chengdu.aliyuncs.com/okr.png
 comments: true
 ---
-
-<link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css">
-<style>
-  :root {
-    --font-family-body: "LXGW WenKai Screen", sans-serif !important;
-    --font-family-headings: "LXGW WenKai Screen", sans-serif !important;
-  }
-  body, h1, h2, h3, h4, h5, h6, .title, .text, .content, .okr-item {
-    font-family: "LXGW WenKai Screen", sans-serif !important;
-  }
-</style>
 
 <div class="tag-plugin quot p">
   <p class="content">
@@ -30,8 +19,8 @@ comments: true
   <div class="okr-item o" id="okr-o1">
     <div class="okr-left"><span class="title">O1</span></div>
     <div class="okr-center">
-      <span class="title">阅读与知识积累</span>
-      <div class="note"><p>备注：通过系统性阅读提升思想深度与知识储备</p></div>
+      <span class="title">重温语文之美，以系统阅读夯实思想与知识储备</span>
+      <div class="note"><p>备注：学生时代未能体悟语文蕴含的文字之美与思想深度，如今希望通过系统性阅读重温经典，沉淀知识储备，提升思辨能力</p></div>
     </div>
     <div class="okr-right colorful" color="orange">
       <div class="labels"><span class="status label">未开始</span> <span class="status percent">0%</span></div>
@@ -43,7 +32,7 @@ comments: true
     <div class="okr-left"><span class="title">KR1</span></div>
     <div class="okr-center">
       <span class="title">深度研读经典著作</span>
-      <div class="note">具体行动：已购入《毛泽东选集》四卷本，计划按卷系统阅读，每周至少完成 2 个章节。</div>
+      <div class="note"><p>具体行动：已购入《毛泽东选集》四卷本，计划按卷系统阅读，每周至少完成 2 个章节。</p></div>
     </div>
     <div class="okr-right colorful" color="orange">
       <div class="labels"><span class="status label">未开始</span> <span class="status percent">0%</span></div>
@@ -68,8 +57,8 @@ comments: true
   <div class="okr-item o" id="okr-o2">
     <div class="okr-left"><span class="title">O2</span></div>
     <div class="okr-center">
-      <span class="title">技术能力边界拓展</span>
-      <div class="note"><p>备注：持续学习前沿技术，构建全栈技术视野</p></div>
+      <span class="title">双驱提升：储蓄积累与全栈技能精进，筑牢个人底气</span>
+      <div class="note"><p>备注：兼顾财务储备与技能成长，通过规律储蓄积累底气，同时系统学习前沿技术，构建全栈技术视野，为个人发展赋能</p></div>
     </div>
     <div class="okr-right colorful" color="orange">
       <div class="labels"><span class="status label">未开始</span> <span class="status percent">0%</span></div>
@@ -80,6 +69,18 @@ comments: true
   <div class="okr-item kr" id="okr-kr3">
     <div class="okr-left"><span class="title">KR3</span></div>
     <div class="okr-center">
+      <span class="title">扩充小金库</span>
+      <div class="note"><p>存款是应对意外的底气，无储蓄则难以从容面对生活不确定性</p></div>
+    </div>
+    <div class="okr-right colorful" color="orange">
+      <div class="labels"><span class="status label">未开始</span> <span class="status percent">0%</span></div>
+      <div class="progress"><div class="fill" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <div class="okr-item kr" id="okr-kr4">
+    <div class="okr-left"><span class="title">KR4</span></div>
+    <div class="okr-center">
       <span class="title">全栈架构能力提升</span>
       <div class="note"><p>系统学习前端与后端架构设计原理，掌握主流技术栈与框架</p></div>
     </div>
@@ -89,3 +90,20 @@ comments: true
     </div>
   </div>
 </div>
+
+<style>
+/* 1. 隐藏底部多余的空框 */
+.article-footer {
+    display: none !important;
+}
+/* 2. 移除 OKR 列表底部的额外间距 */
+.tag-plugin.colorful.okr {
+    margin-bottom: 0 !important;
+}
+
+/* 3. 【重点】隐藏侧边栏的 "explore" 英文和后面的小圆点 */
+.widget-wrapper .item.title strong,
+.widget-wrapper .item.title .dot {
+    display: none !important;
+}
+</style>
