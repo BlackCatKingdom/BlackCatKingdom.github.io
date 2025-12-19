@@ -507,6 +507,7 @@ plugins:
 # ✅ 复制这段代码，完全覆盖 _config.stellar.yml 里的 inject 部分
 # ✅ 复制这段代码，完全覆盖 _config.stellar.yml 里的 inject 部分
 # ✅ 复制这段代码，完全覆盖 _config.stellar.yml 里的 inject 部分
+# ✅ 复制这段代码，完全覆盖 _config.stellar.yml 里的 inject 部分
 inject:
   head:
     # 1. 字体配置
@@ -542,20 +543,21 @@ inject:
           color: #ff9800;
       }
 
-      /* === 💜 皮肤2：Blog 紫色 (罗兰紫) === */
+      /* === 💜 皮肤2：Blog 紫色 (保持不变) === */
       .item.active.style-blog {
-          color: #9c27b0 !important; /* 优雅的罗兰紫 */
-          background: rgba(156, 39, 176, 0.1) !important; /* 淡淡的紫色背景 */
+          color: #9c27b0 !important;
+          background: rgba(156, 39, 176, 0.1) !important;
       }
       .item.active.style-blog::after {
-          color: #9c27b0; /* 星星也变紫 */
+          color: #9c27b0;
       }
       </style>
 
-    # 3. 【智能脚本】自动判断页面类型 (保持不变)
+    # 3. 【智能脚本】升级版：自动变色 + 自动清理浏览器标题
     - |
       <script>
       document.addEventListener("DOMContentLoaded", function() {
+        // --- 功能 A: 侧边栏变色 ---
         var currentUrl = decodeURI(window.location.pathname);
         var links = document.querySelectorAll(".widget-wrapper .widget-body .item");
         
@@ -569,6 +571,11 @@ inject:
             link.classList.add(styleClass);
           }
         });
+
+        // --- 功能 B: 清理浏览器标签栏标题 ---
+        // 如果标题里包含 "explore：" 或 "explore:"，就把它替换为空
+        // 这里的正则意思是：匹配 explore 后面跟着中文冒号或英文冒号，再加任意空格
+        document.title = document.title.replace(/^explore[：:]\s?/, "");
       });
       </script>
 
