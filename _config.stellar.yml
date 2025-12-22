@@ -1,110 +1,292 @@
-sidebar:
-  logo: /images/uploads/cat.jpg
+######## Stellar info ########
+stellar:
+  version: '1.33.1'
+  homepage: 'https://xaoxuu.com/wiki/stellar/'
+  repo: 'https://github.com/xaoxuu/hexo-theme-stellar'
+  main_css: /css/main.css
+  main_js: /js/main.js
 
+######## Sidebar ########
+logo:
+  avatar: https://seekblack.oss-cn-chengdu.aliyuncs.com/cat.jpg
+  title: '[探索](/)'
+  subtitle: '无所事事的记录'
+
+menubar:
+  columns: 4
+  items: 
+    - id: post
+      theme: '#1BCDFC'
+      icon: solar:documents-bold-duotone
+      title: 博客
+      url: /
+    - id: wiki
+      theme: '#FA6400'
+      icon: solar:planet-bold-duotone
+      title: 探索
+      url: /wiki/explore/ 
+    - id: social
+      theme: '#F44336'
+      icon: solar:chat-square-like-bold-duotone
+      title: 社交
+      url: /friends/
+
+######## Main ########
+site_tree:
+  home:
+    leftbar: recent
+    rightbar: 
+  index_blog:
+    base_dir: blog
+    menu_id: post
+    leftbar: recent
+    rightbar: 
+  post:
+    menu_id: post
+    leftbar: recent
+    rightbar: ghrepo, toc
+  page:
+    leftbar: recent
+    rightbar: toc
+  index_topic:
+    base_dir: topic
+    menu_id: post
+  index_wiki:
+    base_dir: wiki
+    menu_id: wiki
+    leftbar: related, recent
+    rightbar: 
+  wiki:
+    menu_id: wiki
+    leftbar: tree, related, recent
+    rightbar: ghrepo, toc
+  author: 
+    base_dir: author
+    menu_id: post
+    leftbar: recent, timeline
+    rightbar: timeline
+  error_page:
+    menu_id: post
+    '404': '/404.html'
+    leftbar: recent, timeline
+    rightbar: timeline
+
+######## Article ########
+article:
+  type: tech
+  cover_ratio: 2
+  banner_ratio: 2.5
+  auto_banner: false
+  auto_excerpt: 128
+  category_color:
+    '探索号': '#f44336'
+  license: '本文采用 [署名-非商业性使用-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处。'
+  related_posts:
+    enable: false
+    max_count: 5
+
+search:
+  service: local_search
+  local_search:
+    field: all
+    path: /search.json
+    content: true
+
+######## Comments ########
 comments:
   service: twikoo
+  comment_title: 快来参与讨论吧~
+  lazyload: false
+  twikoo:
+    js: https://gcore.jsdelivr.net/npm/twikoo@1.6/dist/twikoo.all.min.js
+    envId: https://comments.seekblack.cn
 
-twikoo:
-  envId: https://comments.seekblack.cn
+######## Footer ########
+footer:
+  content: | 
+    本站由 [{author.name}](/) 使用 [{theme.name} {theme.version}]({theme.tree}) 主题创建。
+    本博客所有文章除特别声明外，均采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处。
 
-# 👇 核心代码：JS 强制注入菜单 + 样式修正 👇
+######## Plugins & Services ########
+data_services:
+  friends:
+    js: /js/services/friends.js
+  siteinfo:
+    js: /js/services/siteinfo.js
+  mdrender:
+    js: /js/services/mdrender.js
+
+plugins:
+  preload:
+    enable: true
+    service: flying_pages
+    flying_pages: https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js
+  fancybox:
+    enable: true
+    js: https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js
+    css: https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css
+    selector: .timenode p>img
+  swiper:
+    enable: true
+    css: https://unpkg.com/swiper@10.3/swiper-bundle.min.css
+    js: https://unpkg.com/swiper@10.3/swiper-bundle.min.js
+  copycode:
+    enable: true
+    default_text: 'Copy'
+    success_text: 'Copied'
+    toast: 复制成功
+
+######## Style ########
+style:
+  prefers_theme: auto
+  smooth_scroll: true
+  border-radius:
+    card-l: 24px
+    card: 16px
+    card-s: 12px
+    bar: 8px
+    image-l: 24px
+    image: 16px
+    image-s: 8px
+  color:
+    theme: 'hsl(192 98% 55%)'
+    accent: 'hsl(14 100% 57%)'
+    link: 'hsl(207 90% 54%)'
+  animated_avatar:
+    animate: auto
+    background: https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp
+
+######## ⬇️ 核心注入代码 (这里改了颜色) ⬇️ ########
 inject:
   head:
+    # 字体
     - <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css">
     - <style>:root{--font-family-body:"LXGW WenKai Screen",sans-serif!important;--font-family-headings:"LXGW WenKai Screen",sans-serif!important;}body,h1,h2,h3,h4,h5,h6,.title,.text,.content{font-family:"LXGW WenKai Screen",sans-serif!important;}</style>
+    
+    # 图标库
+    - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    # 样式定义
     - |
       <style>
-      /* 1. 隐藏干扰图标 */
-      .widget-wrapper .widget-body .link.active .active-icon { display: none !important; }
+      /* 1. 注入菜单的容器样式 */
+      .inject-widget { } 
+      .inject-header { font-size: 0.875rem; color: var(--text-p3); margin-bottom: 8px; padding-left: 16px; }
+      .inject-body { background: transparent !important; border-radius: 8px; padding: 4px; }
       
-      /* 2. 红色五角星特效 */
+      /* 2. 注入菜单项基础样式 */
+      .inject-item { display: flex; align-items: center; padding: 8px 12px; border-radius: 4px; color: var(--text-p1); text-decoration: none !important; transition: all 0.2s; font-size: 15px; }
+      .inject-item:hover { background: var(--block); }
+      .inject-icon { width: 24px; text-align: center; margin-right: 8px; color: var(--text-p3); }
+      
+      /* 3. ✅【全局高亮统一样式】核心修改在这里 */
+      /* 无论是注入的菜单(.inject-item) 还是主题自带的Wiki菜单(.widget-wrapper .item) */
+      /* 只要是 active 状态，全部变成红色背景+红色文字 */
+      .inject-item.active,
+      .widget-wrapper .widget-body .item.active,
+      .widget-wrapper .widget-body .link.active { 
+          background: #fbecec !important; /* 淡红色背景 */
+          color: #d9363e !important;      /* 红色文字 */
+          font-weight: bold;
+      }
+      
+      /* 4. ✅【全局青色图标】 */
+      /* 强制激活状态下的图标变为青色 (如果不想要青色可以删掉这行) */
+      .inject-item.active .inject-icon,
+      .widget-wrapper .widget-body .item.active .icon,
+      .widget-wrapper .widget-body .item.active iconify-icon {
+          color: #4ccbf3 !important; 
+      }
+
+      /* 5. ✅【全局红色星星】 */
+      /* 强制所有激活项后面都加个红色星星 */
+      .inject-star,
       .widget-wrapper .widget-body .item.active::after,
-      .widget-wrapper .widget-body .link.active::after {
+      .widget-wrapper .widget-body .link.active::after { 
           content: "★";
-          margin-left: auto;
-          margin-right: 8px;
-          font-size: 14px;
-          color: #f44336; 
+          margin-left: auto; 
+          color: #d9363e !important; 
+          font-size: 12px; 
           display: inline-block;
           order: 99;
       }
-      
-      /* 3. 强制对齐修正 */
-      .widget-wrapper .linklist .link {
-          display: flex !important;
-          align-items: center !important;
-          justify-content: flex-start !important; 
-          gap: 4px !important; 
-      }
-      
-      /* 4. 激活项加粗 */
-      .widget-wrapper .widget-body .item.active,
-      .widget-wrapper .widget-body .link.active {
-          font-weight: bold;
-          border-radius: 4px;
-      }
-      
-      /* 5. 颜色定义 */
-      .style-social { color: #f44336 !important; background: rgba(244, 67, 54, 0.1) !important; }
-      .style-social::after { color: #f44336; }
-      .style-wiki { color: #ff9800 !important; background: rgba(255, 152, 0, 0.1) !important; }
-      .style-wiki::after { color: #ff9800; }
-      .style-blog { color: #9c27b0 !important; background: rgba(156, 39, 176, 0.1) !important; }
-      .style-blog::after { color: #9c27b0; }
       </style>
+
+    # 脚本：侧边栏注入 + 顶部导航逻辑
     - |
       <script>
       document.addEventListener("DOMContentLoaded", function() {
-        var currentUrl = decodeURI(window.location.pathname);
-        var isFriendsPage = currentUrl.indexOf("/friends/") !== -1;
-        var isAboutPage = currentUrl.indexOf("/about/") !== -1;
+          var path = decodeURI(window.location.pathname);
 
-        // 【核弹逻辑】: 只要是友链页 或者 关于页，都强制插入菜单！
-        if (isFriendsPage || isAboutPage) {
-            var searchWidget = document.getElementById('search-wrapper');
-            var existingMenu = document.querySelector('.widget-wrapper.linklist');
-            
-            // 防止重复插入
-            if (searchWidget && !existingMenu) {
-                var menuHtml = `
-                <widget class="widget-wrapper linklist">
-                    <div class="widget-header dis-select"><span class="name">社交</span></div>
-                    <div class="widget-body fs14">
-                        <div class="linklist left">
-                            <a class="link ${isFriendsPage ? 'active' : ''}" title="小伙伴们" href="/friends/">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5S5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05c1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" opacity=".5"/></svg>
-                                <span>小伙伴们</span>
-                            </a>
-                            <a class="link ${isAboutPage ? 'active' : ''}" title="关于本站" href="/about/">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg>
-                                <span>关于本站</span>
-                            </a>
-                        </div>
-                    </div>
-                </widget>`;
-                searchWidget.insertAdjacentHTML('afterend', menuHtml);
-            }
-        }
-
-        // 高亮与颜色逻辑
-        var links = document.querySelectorAll(".widget-wrapper .widget-body .item, .widget-wrapper .widget-body .link");
-        var styleClass = "style-blog";
-        if (currentUrl.indexOf("/wiki/") !== -1) { styleClass = "style-wiki"; } 
-        else if (isFriendsPage || isAboutPage) { styleClass = "style-social"; }
-        
-        links.forEach(function(link) {
-          var href = decodeURI(link.getAttribute("href"));
-          if (href === currentUrl || (href !== "/" && currentUrl.startsWith(href))) {
-            link.classList.add("active");
-            link.classList.add(styleClass);
+          // 1. 顶部导航栏高亮逻辑
+          if (path.indexOf("/friends/") !== -1 || path.indexOf("/about/") !== -1) {
+              var navItems = document.querySelectorAll('.nav-area .menu .nav-item');
+              navItems.forEach(function(item) {
+                  item.classList.remove('active');
+                  var itemHref = item.getAttribute('href');
+                  
+                  if (itemHref !== '/' && path.startsWith(itemHref)) {
+                       item.classList.add('active');
+                  }
+                  
+                  // About 页面点亮爱心
+                  if (path.indexOf("/about/") !== -1 && itemHref.indexOf("/friends/") !== -1) {
+                       item.classList.add('active');
+                  }
+              });
           }
-        });
-        
-        // 杂项清理
-        var searchInput = document.getElementById("search-input");
-        if (searchInput && searchInput.getAttribute("placeholder").indexOf("/wiki/explore/") !== -1) {
-            searchInput.setAttribute("placeholder", "在探索中搜索");
-        }
-        if (document.title.startsWith("explore")) document.title = document.title.replace(/^explore[：:]\s?/, "");
+
+          // 2. 侧边栏菜单注入 (仅在友链/关于页)
+          if (path.indexOf("/friends/") === -1 && path.indexOf("/about/") === -1) return;
+          
+          var target = document.querySelector('.leftbar-container .search-wrapper');
+          if (!target) target = document.querySelector('.leftbar-container .widget-wrapper.recent');
+          
+          if (target) {
+              var isFriends = path.indexOf("/friends/") !== -1;
+              var isAbout = path.indexOf("/about/") !== -1;
+              
+              var html = `
+              <div class="inject-widget">
+                  <div class="inject-header">社交</div>
+                  <div class="inject-body">
+                      <a href="/friends/" class="inject-item ${isFriends ? 'active' : ''}">
+                          <i class="fa-solid fa-user-group inject-icon"></i>
+                          <span>小伙伴们</span>
+                          ${isFriends ? '<i class="fa-solid fa-star inject-star"></i>' : ''}
+                      </a>
+                      <a href="/about/" class="inject-item ${isAbout ? 'active' : ''}">
+                          <i class="fa-solid fa-comment-dots inject-icon"></i>
+                          <span>关于本站</span>
+                          ${isAbout ? '<i class="fa-solid fa-star inject-star"></i>' : ''}
+                      </a>
+                  </div>
+              </div>`;
+
+              if (target.classList.contains('search-wrapper')) {
+                  target.insertAdjacentHTML('afterend', html);
+              } else {
+                  target.insertAdjacentHTML('beforebegin', html);
+              }
+          }
+          
+          // 3. 杂项修正
+          if (document.title.startsWith("explore")) document.title = document.title.replace(/^explore[：:]\s?/, "");
+          var sInput = document.getElementById("search-input");
+          if (sInput && sInput.getAttribute("placeholder").indexOf("/wiki/explore/") !== -1) {
+              sInput.setAttribute("placeholder", "在探索中搜索");
+          }
       });
       </script>
+
+# 基础依赖
+dependencies:
+  jquery: https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js
+  marked: https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js
+  lazyload:
+    js: https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js
+    transition: fade
+    fix_ratio: true
+
+system:
+  override_pretty_urls: true
