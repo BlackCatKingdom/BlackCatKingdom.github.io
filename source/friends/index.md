@@ -16,14 +16,19 @@ rightbar: [toc, author]
 <strong>格式</strong>：名称 / 链接 / 头像 / 简介</p>
 </div>
 
-<h1>本站测试</h1>
-
 <div class="diy-card-group">
-    <a class="diy-card" target="_blank" href="https://seekblack.cn/">
-        <div class="img-box"><img class="no-lazy" src="https://seekblack.oss-cn-chengdu.aliyuncs.com/cat.jpg"></div>
+    <a class="diy-card" target="_blank" href="https://blog.lris625.top/">
+        <div class="img-box"><img class="no-lazy" src="https://pic1.imgdb.cn/item/68fe309a3203f7be00a0c198.png"></div>
         <div class="info-box">
-            <span class="title-text">探索</span>
-            <span class="desc-text">无所事事的记录</span>
+            <span class="title-text">Lucas的小博客</span>
+            <span class="desc-text">欲买桂花同载酒，终不似，少年游</span>
+        </div>
+    </a>
+    <a class="diy-card" target="_blank" href="zhang-wentao.tech">
+        <div class="img-box"><img class="no-lazy" src="favicon.ico"></div>
+        <div class="info-box">
+            <span class="title-text">CloudBLOG</span>
+            <span class="desc-text"></span>
         </div>
     </a>
 </div>
