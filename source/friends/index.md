@@ -24,8 +24,8 @@ rightbar: [toc, author]
             <span class="desc-text">欲买桂花同载酒，终不似，少年游</span>
         </div>
     </a>
-    <a class="diy-card" target="_blank" href="zhang-wentao.tech">
-        <div class="img-box"><img class="no-lazy" src="favicon.ico"></div>
+    <a class="diy-card" target="_blank" href="https://zhang-wentao.tech/">
+        <div class="img-box"><img class="no-lazy" src="https://zhang-wentao.tech/favicon.ico"></div>
         <div class="info-box">
             <span class="title-text">CloudBLOG</span>
             <span class="desc-text"></span>

@@ -1,32 +1,40 @@
 [
   {
-    "group": "核心伙伴",
-    "items": [
+    "title": "枋柚梓",
+    "url": "https://inkss.cn/",
+    "avatar": "https://bu.dusays.com/2022/05/02/626f92e193e79.jpg",
+    "description": "也就是你截图里的那个大佬",
+    "feed": "https://inkss.cn/atom.xml",
+    "labels": [
       {
-        "name": "枋柚梓",
-        "url": "https://inkss.cn/",
-        "avatar": "https://bu.dusays.com/2022/05/02/626f92e193e79.jpg",
-        "desc": "也就是你截图里的那个大佬",
-        "feed": "https://inkss.cn/atom.xml"
-      },
-      {
-        "name": "XAOXUU",
-        "url": "https://xaoxuu.com/",
-        "avatar": "https://gcore.jsdelivr.net/gh/cdn-x/xaoxuu@main/avatar/classic.webp",
-        "desc": "Stellar 主题作者",
-        "feed": "https://xaoxuu.com/atom.xml"
+        "name": "核心伙伴",
+        "color": "f44336"
       }
     ]
   },
   {
-    "group": "本站测试",
-    "items": [
+    "title": "XAOXUU",
+    "url": "https://xaoxuu.com/",
+    "avatar": "https://gcore.jsdelivr.net/gh/cdn-x/xaoxuu@main/avatar/classic.webp",
+    "description": "Stellar 主题作者",
+    "feed": "https://xaoxuu.com/atom.xml",
+    "labels": [
       {
-        "name": "探索 (我自己)",
-        "url": "https://seekblack.cn/",
-        "avatar": "https://seekblack.oss-cn-chengdu.aliyuncs.com/cat.jpg",
-        "desc": "测试一下 RSS 抓取功能是否正常",
-        "feed": "https://seekblack.cn/atom.xml"
+        "name": "核心伙伴",
+        "color": "f44336"
+      }
+    ]
+  },
+  {
+    "title": "探索 (我自己)",
+    "url": "https://seekblack.cn/",
+    "avatar": "https://seekblack.oss-cn-chengdu.aliyuncs.com/cat.jpg",
+    "description": "测试一下 RSS 抓取功能是否正常",
+    "feed": "https://seekblack.cn/atom.xml",
+    "labels": [
+      {
+        "name": "本站测试",
+        "color": "2196f3"
       }
     ]
   }

@@ -56,25 +56,60 @@ collections:
           # --- SEO 优化 ---
           - {label: "网站描述", name: "description", widget: "text", hint: "一段话介绍你的博客，利于SEO"}
           - {label: "关键词", name: "keywords", widget: "string", hint: "用逗号分隔，例如：生活,技术,随笔"}
-
-          # --- 主题外观 ---
-          - label: "主题配置"
-            name: "theme_config"
+      - name: "theme"
+        label: "主题配置 (Stellar)"
+        file: "_config.stellar.yml"
+        fields:
+          # --- 侧边栏 ---
+          - label: "侧边栏"
+            name: "logo"
             widget: "object"
             fields:
-              # 侧边栏头像
-              - label: "侧边栏"
-                name: "sidebar"
+              - {label: "Logo头像", name: "avatar", widget: "image"}
+              - {label: "标题", name: "title", widget: "string"}
+              - {label: "副标题", name: "subtitle", widget: "string"}
+
+          # --- 菜单栏 ---
+          - label: "菜单栏"
+            name: "menubar"
+            widget: "object"
+            fields:
+              - {label: "列数", name: "columns", widget: "number", value_type: "int", min: 1, max: 6}
+              - label: "菜单项"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - {label: "ID", name: "id", widget: "string"}
+                  - {label: "主题色", name: "theme", widget: "string"}
+                  - {label: "图标", name: "icon", widget: "string"}
+                  - {label: "标题", name: "title", widget: "string"}
+                  - {label: "链接", name: "url", widget: "string"}
+
+          # --- 评论 ---
+          - label: "评论"
+            name: "comments"
+            widget: "object"
+            fields:
+              - {label: "服务", name: "service", widget: "string"}
+              - {label: "标题", name: "comment_title", widget: "string"}
+              - {label: "延迟加载", name: "lazyload", widget: "boolean", required: false}
+              - label: "Twikoo"
+                name: "twikoo"
                 widget: "object"
                 fields:
-                  - {label: "Logo头像", name: "logo", widget: "image"}
-               
-              # 社交链接 (列表模式)
-              - label: "社交链接"
-                name: "social"
-                widget: "list"
-                summary: "{{fields.id}}"
+                  - {label: "JS", name: "js", widget: "string"}
+                  - {label: "EnvId", name: "envId", widget: "string"}
+
+          # --- 配色 ---
+          - label: "配色"
+            name: "style"
+            widget: "object"
+            fields:
+              - label: "颜色"
+                name: "color"
+                widget: "object"
                 fields:
-                  - {label: "平台ID", name: "id", widget: "string", hint: "例如: github, bilibili"}
-                  - {label: "图标代码", name: "icon", widget: "string", hint: "例如: fa-brands fa-github (去FontAwesome找)"}
-                  - {label: "链接地址", name: "url", widget: "string"}
+                  - {label: "主题色", name: "theme", widget: "string"}
+                  - {label: "强调色", name: "accent", widget: "string"}
+                  - {label: "链接色", name: "link", widget: "string"}

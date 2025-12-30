@@ -273,7 +273,8 @@ inject:
           // 3. 杂项修正
           if (document.title.startsWith("explore")) document.title = document.title.replace(/^explore[：:]\s?/, "");
           var sInput = document.getElementById("search-input");
-          if (sInput && sInput.getAttribute("placeholder").indexOf("/wiki/explore/") !== -1) {
+          var placeholder = sInput ? (sInput.getAttribute("placeholder") || "") : "";
+          if (sInput && placeholder.indexOf("/wiki/explore/") !== -1) {
               sInput.setAttribute("placeholder", "在探索中搜索");
           }
       });
