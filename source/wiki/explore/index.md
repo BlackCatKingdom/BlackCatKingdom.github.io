@@ -23,8 +23,8 @@ comments: true
       <div class="note"><p>备注：学生时代未能体悟语文蕴含的文字之美与思想深度，如今希望通过系统性阅读重温经典，沉淀知识储备，提升思辨能力</p></div>
     </div>
     <div class="okr-right colorful" color="orange">
-      <div class="labels"><span class="status label">未开始</span> <span class="status percent">0%</span></div>
-      <div class="progress"><div class="fill" style="width:0%"></div></div>
+      <div class="labels"><span class="status label">未开始</span> <span class="status percent" data-target="0">0%</span></div>
+      <div class="progress"><div class="fill" style="width:0%" data-target="0"></div></div>
     </div>
   </div>
 
@@ -35,8 +35,8 @@ comments: true
       <div class="note"><p>具体行动：已购入《毛泽东选集》四卷本，计划按卷系统阅读，每周至少完成 2 个章节。</p></div>
     </div>
     <div class="okr-right colorful" color="orange">
-      <div class="labels"><span class="status label">未开始</span> <span class="status percent">0%</span></div>
-      <div class="progress"><div class="fill" style="width:0%"></div></div>
+      <div class="labels"><span class="status label">未开始</span> <span class="status percent" data-target="0">0%</span></div>
+      <div class="progress"><div class="fill" style="width:0%" data-target="0"></div></div>
     </div>
   </div>
 
@@ -44,11 +44,11 @@ comments: true
     <div class="okr-left"><span class="title">KR2</span></div>
     <div class="okr-center">
       <span class="title">建立个人知识输出平台</span>
-      <div class="note"><p>2026年启动个人博客<br>以日记形式记录学习思考、生活感悟与知识沉淀。</p></div>
+      <div class="note"><p>2026年启动个人博客，以日记形式记录学习思考、生活感悟与知识沉淀。</p></div>
     </div>
     <div class="okr-right colorful" color="orange">
-      <div class="labels"><span class="status label">未开始</span> <span class="status percent">0%</span></div>
-      <div class="progress"><div class="fill" style="width:0%"></div></div>
+      <div class="labels"><span class="status label">未开始</span> <span class="status percent" data-target="0">0%</span></div>
+      <div class="progress"><div class="fill" style="width:0%" data-target="0"></div></div>
     </div>
   </div>
 </div>
@@ -61,8 +61,8 @@ comments: true
       <div class="note"><p>备注：兼顾财务储备与技能成长，通过规律储蓄积累底气，同时系统学习前沿技术，构建全栈技术视野，为个人发展赋能</p></div>
     </div>
     <div class="okr-right colorful" color="orange">
-      <div class="labels"><span class="status label">未开始</span> <span class="status percent">0%</span></div>
-      <div class="progress"><div class="fill" style="width:0%"></div></div>
+      <div class="labels"><span class="status label">未开始</span> <span class="status percent" data-target="0">0%</span></div>
+      <div class="progress"><div class="fill" style="width:0%" data-target="0"></div></div>
     </div>
   </div>
   
@@ -73,8 +73,8 @@ comments: true
       <div class="note"><p>存款是应对意外的底气，无储蓄则难以从容面对生活不确定性</p></div>
     </div>
     <div class="okr-right colorful" color="orange">
-      <div class="labels"><span class="status label">未开始</span> <span class="status percent">0%</span></div>
-      <div class="progress"><div class="fill" style="width:0%"></div></div>
+      <div class="labels"><span class="status label">未开始</span> <span class="status percent" data-target="0">0%</span></div>
+      <div class="progress"><div class="fill" style="width:0%" data-target="0"></div></div>
     </div>
   </div>
 
@@ -85,8 +85,8 @@ comments: true
       <div class="note"><p>系统学习前端与后端架构设计原理，掌握主流技术栈与框架</p></div>
     </div>
     <div class="okr-right colorful" color="orange">
-      <div class="labels"><span class="status label">未开始</span> <span class="status percent">0%</span></div>
-      <div class="progress"><div class="fill" style="width:0%"></div></div>
+      <div class="labels"><span class="status label">未开始</span> <span class="status percent" data-target="0">0%</span></div>
+      <div class="progress"><div class="fill" style="width:0%" data-target="0"></div></div>
     </div>
   </div>
 </div>
@@ -94,16 +94,80 @@ comments: true
 <style>
 /* 1. 隐藏底部多余的空框 */
 .article-footer {
-    display: none !important;
+  display: none !important;
 }
 /* 2. 移除 OKR 列表底部的额外间距 */
 .tag-plugin.colorful.okr {
-    margin-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
-/* 3. 【重点】隐藏侧边栏的 "explore" 英文和后面的小圆点 */
+/* 3. 隐藏侧边栏的 "explore" 英文和后面的小圆点 */
 .widget-wrapper .item.title strong,
 .widget-wrapper .item.title .dot {
-    display: none !important;
+  display: none !important;
+}
+
+/* 4. 进度条动态过渡效果 */
+.okr-right .progress .fill {
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 0%; /* 初始宽度为0，由JS接管 */
 }
 </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const okrItems = document.querySelectorAll('.okr-item');
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateOKR(entry.target);
+          observer.unobserve(entry.target); // 动画只播放一次
+        }
+      });
+    }, { threshold: 0.2 });
+
+    okrItems.forEach(item => {
+      observer.observe(item);
+    });
+
+  } else {
+    // 兼容不支持 Observer 的浏览器，直接显示
+    okrItems.forEach(item => animateOKR(item));
+  }
+
+  function animateOKR(container) {
+    // 1. 动画进度条
+    const bar = container.querySelector('.fill');
+    if (bar) {
+      const targetWidth = bar.getAttribute('data-target');
+      if (targetWidth) {
+        bar.style.width = targetWidth + "%";
+      }
+    }
+
+    // 2. 动画数字
+    const percentText = container.querySelector('.status.percent');
+    if (percentText) {
+      const targetNum = parseInt(percentText.getAttribute('data-target') || 0);
+      if (targetNum > 0) {
+        let count = 0;
+        const duration = 1500;
+        const interval = 20;
+        const step = targetNum / (duration / interval);
+        
+        const timer = setInterval(() => {
+          count += step;
+          if (count >= targetNum) {
+            percentText.textContent = targetNum + "%";
+            clearInterval(timer);
+          } else {
+            percentText.textContent = Math.floor(count) + "%";
+          }
+        }, interval);
+      }
+    }
+  }
+});
+</script>

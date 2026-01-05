@@ -31,22 +31,53 @@ menubar:
       title: 社交
       url: /friends/
 
+# ✅ [新增] 这里定义了您的打字机小组件
+widgets:
+  sidebar_intro:
+    type: html
+    content: |
+      <div class="typewriter-container" style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 1.1rem; color: #555; padding: 10px 0;">
+        <span id="typewriter-text"></span><span class="typing-cursor">|</span>
+      </div>
+      <style>
+        .typing-cursor { display: inline-block; color: #14b8a6; font-weight: bold; margin-left: 2px; animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+      </style>
+      <script>
+        (function() {
+          const texts = ["无所事事的记录", "生活碎片的存档", "漫无目的的思考", "静谧时光的独白"];
+          let step = 0; let idx = 0; let del = false;
+          const el = document.getElementById('typewriter-text');
+          function type() {
+            const txt = texts[step];
+            if (del) { el.textContent = txt.substring(0, idx--); }
+            else { el.textContent = txt.substring(0, idx++); }
+            let spd = del ? 100 : 150;
+            if (!del && idx === txt.length + 1) { del = true; spd = 2000; }
+            else if (del && idx === -1) { del = false; step = (step + 1) % texts.length; idx = 0; spd = 500; }
+            setTimeout(type, spd);
+          }
+          document.addEventListener('DOMContentLoaded', type);
+        })();
+      </script>
+
 ######## Main ########
+# ✅ [修改] 在下方所有页面的 leftbar 中加入了 sidebar_intro
 site_tree:
   home:
-    leftbar: recent
+    leftbar: sidebar_intro, recent
     rightbar: 
   index_blog:
     base_dir: blog
     menu_id: post
-    leftbar: recent
+    leftbar: sidebar_intro, recent
     rightbar: 
   post:
     menu_id: post
-    leftbar: recent
+    leftbar: sidebar_intro, recent
     rightbar: ghrepo, toc
   page:
-    leftbar: recent
+    leftbar: sidebar_intro, recent
     rightbar: toc
   index_topic:
     base_dir: topic
@@ -54,21 +85,21 @@ site_tree:
   index_wiki:
     base_dir: wiki
     menu_id: wiki
-    leftbar: related, recent
+    leftbar: sidebar_intro, related, recent
     rightbar: 
   wiki:
     menu_id: wiki
-    leftbar: tree, related, recent
+    leftbar: tree, sidebar_intro, related, recent
     rightbar: ghrepo, toc
   author: 
     base_dir: author
     menu_id: post
-    leftbar: recent, timeline
+    leftbar: sidebar_intro, recent, timeline
     rightbar: timeline
   error_page:
     menu_id: post
     '404': '/404.html'
-    leftbar: recent, timeline
+    leftbar: sidebar_intro, recent, timeline
     rightbar: timeline
 
 ######## Article ########
@@ -226,12 +257,12 @@ inject:
                   var itemHref = item.getAttribute('href');
                   
                   if (itemHref !== '/' && path.startsWith(itemHref)) {
-                       item.classList.add('active');
+                        item.classList.add('active');
                   }
                   
                   // About 页面点亮爱心
                   if (path.indexOf("/about/") !== -1 && itemHref.indexOf("/friends/") !== -1) {
-                       item.classList.add('active');
+                        item.classList.add('active');
                   }
               });
           }
